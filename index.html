@@ -1,25 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="shortcut icon" href="/public/icon.ico" type="image/x-icon" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Conceptual Designs" />
-    <title>
-      Conceptual Designs - Web Design | App Development | Graphic Design
-    </title>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-    />
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
-    </style>
-    <title>Conceptual Designs | Less is More</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="shortcut icon" href="/public/favicon.png" type="image/x-icon" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Conceptual Designs" />
+  <title>
+          Conceptual Designs - Web Design | App Development | Graphic Design
+  </title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+    svg {
+      max-width: 80vmin;
+    }
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+    @keyframes rotate {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .textcircle {
+      transition: transform 1s cubic-bezier(0.65, 0, 0.35, 1);
+      transform-origin: 150px 150px;
+    }
+
+    svg:hover .textcircle {
+      transform: scale(1.2) rotate(90deg);
+    }
+  </style>
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" xml:lang="en" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 200">
+    <title>Conceptual Designs</title>
+    <defs>
+      <path id="textcircle" d="M250,400 a150,150 0 0,1 0,-300a150,150 0 0,1 0,300Z" transform="rotate(0,250,250)" />
+    </defs>
+    <g class="textcircle">
+      <text textLength="940">
+        <textPath xlink:href="#textcircle" aria-label="CSS & SVG are awesome" textLength="940">
+          Conceptual Designs | Conceptual Designs |&#160;
+        </textPath>
+      </text>
+    </g>
+  </svg>
+  <footer>
+    <p>© Conceptual Designs 2024 - All rights reserved.</p>
+  </footer>
+  <script>
+    // Set the date we're counting down to
+    var countDownDate = new Date("2024-03-08T12:00:00").getTime();
+
+    // Update the countdown every 1 second
+    var x = setInterval(function() {
+      // Get the current date and time
+      var now = new Date().getTime();
+
+      // Find the distance between now and the countdown date
+      var distance = countDownDate - now;
+
+      // Calculate days, hours, minutes, and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Display the countdown in the element with id="countdown"
+      document.getElementById("countdown").innerHTML = days + "d " + hours + "h " +
+        minutes + "m " + seconds + "s ";
+
+      // If the countdown is over, display a message
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "EXPIRED";
+      }
+    }, 1000);
+  </script>
+</body>
 </html>
